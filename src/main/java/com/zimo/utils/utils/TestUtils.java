@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestUtils {
 
@@ -74,6 +76,24 @@ public class TestUtils {
         System.out.println("str="+new String(s.getBytes(),"UTF-8"));
     }
 
+    public void test6()throws Exception{
+        String arrStr = "a,b,c,,,d,";
+        String[] arr = arrStr.split(",");
+        System.out.println(arr.length);
+    }
+
+    public void test7()throws Exception{
+        List<String> a = new ArrayList<>();
+        a.add("1");
+        a.add("2");
+        for (String temp : a) {
+            if("2".equals(temp)){
+                a.remove(temp);
+            }
+        }
+        a.size();
+    }
+
     public static String getURLSource(URL url) throws Exception    {
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
         conn.setRequestMethod("POST");
@@ -109,7 +129,8 @@ public class TestUtils {
 //        t.test();
 //        t.test2();
 //          t.test4();
-            t.test5();
+//            t.test5();
+            t.test7();
         }catch (Exception e){
             e.printStackTrace();
         }
