@@ -34,4 +34,14 @@ public class StringUtils {
         }
         return true;
     }
+
+    public static void notBlank(String str){
+        notBlank(str,"The Validate string is null or empty");
+    }
+
+    public static void notBlank(String str,String message){
+        if (isBlank(str)){
+            throw new IllegalArgumentException(message);
+        }
+    }
 }
