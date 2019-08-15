@@ -2,6 +2,7 @@ package com.zimo.utils.threads.thread_learn_first;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author zi.mo
@@ -23,6 +24,7 @@ public class ThreadTest {
         Thread.sleep(10);
         System.out.println(CountThread.getNum());
 
+        ReentrantLock lock = new ReentrantLock();
 
         int threadNumber = 10;
         final CountDownLatch countDownLatch = new CountDownLatch(threadNumber);
@@ -30,15 +32,22 @@ public class ThreadTest {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for (int i=0;i<10000;i++)
-                        num++;
-                    System.out.println(Thread.currentThread() +" \t finished!" );
-                    countDownLatch.countDown();
+                    lock.lock();
+                    try {
+                        for (int i=0;i<10;i++)
+                            num++;
+                        System.out.println(Thread.currentThread() +" \t finished!" );
+                        countDownLatch.countDown();
+                    }finally {
+                        lock.unlock();
+                    }
+
                 }
             }).start();
         }
         countDownLatch.await();
-        System.out.println(Thread.currentThread()+" \t"+num);
+//        while (Thread.activeCount() > 0)
+            System.out.println(Thread.currentThread()+" \t"+num);
 
     }
 }

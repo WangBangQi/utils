@@ -24,24 +24,24 @@ public class IpUtils {
     public static String getClientIp(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
         if(LOG.isDebugEnabled()) {
-//	    	   LOG.debug("x-forwarded-for = {}", ip);
+	    	   LOG.debug("x-forwarded-for = {}", ip);
         }
         if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
             if(LOG.isDebugEnabled()) {
-//		    	   LOG.debug("Proxy-Client-IP = {}", ip);
+		    	   LOG.debug("Proxy-Client-IP = {}", ip);
             }
         }
         if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("WL-Proxy-Client-IP");
             if(LOG.isDebugEnabled()) {
-//		    	   LOG.debug("WL-Proxy-Client-IP = {}", ip);
+		    	   LOG.debug("WL-Proxy-Client-IP = {}", ip);
             }
         }
         if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
             if(LOG.isDebugEnabled()) {
-//		    	   LOG.debug("RemoteAddr-IP = {}", ip);
+		    	   LOG.debug("RemoteAddr-IP = {}", ip);
             }
         }
         if(StringUtils.isEmpty(ip)) {

@@ -1,6 +1,7 @@
 package com.zimo.utils.utils;
 
-import com.zimo.utils.threads.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author zi.mo
@@ -12,8 +13,10 @@ import com.zimo.utils.threads.Test;
  */
 public class MineMagicUtil {
 
+    private static final Logger log = LoggerFactory.getLogger(MineMagicUtil.class);
 
-     /***
+
+    /***
      * ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
      * │Esc│   │ F1│ F2│ F3│ F4│ │ F5│ F6│ F7│ F8│ │ F9│F10│F11│F12│ │P/S│S L│P/B│  ┌┐    ┌┐    ┌┐
      * └───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘  └┘    └┘    └┘
@@ -29,7 +32,9 @@ public class MineMagicUtil {
      * │ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│
      * └─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
      */
-    public void one(){}
+    public void one(){
+
+    }
 
     /***
      *                    _ooOoo_

@@ -2,6 +2,7 @@ package cn.zimo.wbq.delayedQueue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-@Service("delayedService")
+@Component("delayedService")
 public class DelayedServiceImpl implements DelayedService {
     private static final Logger logger = LoggerFactory.getLogger(DelayedServiceImpl.class);
     private static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
