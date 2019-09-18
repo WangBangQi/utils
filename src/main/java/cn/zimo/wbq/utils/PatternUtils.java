@@ -40,4 +40,22 @@ public class PatternUtils {
         }
         return valueLength;
     }
+
+
+
+    public static boolean version(String value){
+        String str = "^[1-9]\\.[\\d]\\.[\\d]";
+        Pattern pattern = Pattern.compile(str);
+        Matcher matcher = pattern.matcher(value);
+        if (matcher.matches())return true;
+        return false;
+    }
+
+    public static void main(String args[]){
+        System.out.println(version("4.5.6"));
+        System.out.println(version("0.5.6"));
+        System.out.println(version("4.5."));
+        System.out.println(version("1..6"));
+        System.out.println(version("0.0.0"));
+    }
 }
