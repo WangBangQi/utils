@@ -5,6 +5,14 @@ import cn.zimo.wbq.http.HttpHandler;
 import cn.zimo.wbq.http.HttpResponse;
 import com.alibaba.fastjson.JSONObject;
 import com.zimo.utils.maps.gaode.exceptions.GdMapException;
+import com.zimo.utils.utils.SecurityUtil;
+import org.apache.tomcat.util.security.MD5Encoder;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.Security;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author zi.mo
@@ -31,7 +39,8 @@ public class GdMapClient {
         } else {
             request.setMethod(request.getDefaultMethod());
         }
-
+        //计算签名之后，签名错误也能够正常返回，所以先不使用
+//        request.setQueryMap(this.sign(request.getParamMap()));
         boolean retry = this.autoRetry;
         int retryNumber = this.maxRetryNumber;
         HttpResponse response = null;
@@ -46,6 +55,37 @@ public class GdMapClient {
             }
         }
         return response;
+    }
+
+    private Map<String,String> sign(Map<String,String> paramMap){
+        Set<String> keys = paramMap.keySet();
+        //升序排序 KEY
+        List<String> keyList = keys.stream()
+                .sorted(new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        return o1.compareTo(o2);
+                    }
+                })
+                .collect(Collectors.toList());
+
+        StringBuilder signValue = new StringBuilder();
+        for (String key : keyList){
+            signValue.append(key).append("=").append(paramMap.get(key)).append("&");
+        }
+
+        signValue.deleteCharAt(signValue.lastIndexOf("&"));
+
+        //添加密钥
+        signValue.append(Constant.SIGN_PRIVATE_SECRET);
+
+        try {
+            paramMap.put("sig", SecurityUtil.generateSign(signValue.toString()));
+        }catch (NoSuchAlgorithmException e){
+            throw new GdMapException("MD5 sign failed:{}",e);
+        }
+
+        return paramMap;
     }
 
 

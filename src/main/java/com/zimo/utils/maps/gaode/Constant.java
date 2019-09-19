@@ -10,8 +10,12 @@ public final class Constant {
     /**
      * 高德地图的应用 KEY  ，WIYDD
      */
-    public static final String APP_KEY = "83a6044de76597107b70e97db7785aa0";
+    public static final String APP_KEY = "8afe37a02ace445f368bdbbf96943afc";
 
+    /**
+     * 签名私钥
+     */
+    public static final String SIGN_PRIVATE_SECRET = "9a64d4e1e43f15b014d9ec7d193eee40";
 
     /**
      * 高德编码

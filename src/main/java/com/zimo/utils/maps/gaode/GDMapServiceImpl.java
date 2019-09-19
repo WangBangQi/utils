@@ -1,7 +1,5 @@
 package com.zimo.utils.maps.gaode;
 
-import cn.zimo.wbq.http.HttpRequest;
-
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +20,7 @@ public class GDMapServiceImpl implements GDMapService {
     }
 
     @Override
-    public <T extends GdMapResponse> T gerGdMapResponse(GdMapRequest<T> request) {
+    public <T extends GdMapResponse> T  gerGdMapResponse(GdMapRequest<T> request) {
         return client.getGdMapResponse(request);
     }
 
