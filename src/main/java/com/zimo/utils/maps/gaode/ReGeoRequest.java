@@ -10,14 +10,23 @@ import com.zimo.utils.maps.gaode.exceptions.GdMapException;
  */
 public class ReGeoRequest extends GdMapRequest<ReGeoResponse>{
 
-    private String key;
-
+    /**
+     * 经度
+     */
     private String lat;
-
+    /**
+     * 维度
+     */
     private String lng;
 
+    /**
+     * 范围
+     */
     private Integer radius;
 
+    /**
+     * 等级
+     */
     private Integer roadLevel;
 
     public ReGeoRequest() {
@@ -37,17 +46,6 @@ public class ReGeoRequest extends GdMapRequest<ReGeoResponse>{
     @Override
     public String getRequestMethod() {
         return HttpRequest.METHOD_GET;
-    }
-
-    public void setKey(String key){
-        this.key = key;
-        if (key != null) {
-            this.putParamMap("key", key);
-        }
-    }
-
-    public String getKey() {
-        return this.key;
     }
 
     /**

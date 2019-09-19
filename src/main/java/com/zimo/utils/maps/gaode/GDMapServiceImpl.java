@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
  */
 public class GDMapServiceImpl implements GDMapService {
 
-    private static final Logger log = LoggerFactory.getLogger(GDMapServiceImpl.class);
-
     private static GdMapClient client;
 
     static {
@@ -24,24 +22,4 @@ public class GDMapServiceImpl implements GDMapService {
         return client.getGdMapResponse(request);
     }
 
-    public static void main (String args[]){
-
-        GDMapService gdMapService = new GDMapServiceImpl();
-
-        ReGeoRequest reGeoRequest = new ReGeoRequest();
-        reGeoRequest.setKey(Constant.APP_KEY);
-        reGeoRequest.setLatLng("120.1068580000","30.3320730000");
-        reGeoRequest.setRoadLevel(0);
-
-        ReGeoResponse reGeoResponse = gdMapService.gerGdMapResponse(reGeoRequest);
-
-
-        if (reGeoResponse.isSuccess()){
-            log.info("请求成功:{}",JSONObject.toJSONString(reGeoResponse.getRegeocode()));
-        } else {
-            log.info("请求失败:info={},infocode={}",reGeoResponse.getInfo(),reGeoResponse.getInfocode());
-        }
-
-
-    }
 }

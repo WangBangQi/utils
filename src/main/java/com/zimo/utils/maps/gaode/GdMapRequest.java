@@ -13,6 +13,11 @@ import java.util.Map;
 public abstract class GdMapRequest <T extends GdMapResponse>extends HttpRequest {
 
     /**
+     * 高德 KEY
+     */
+    private String key;
+
+    /**
      * 请求参数
      */
     private Map<String,String> paramMap = new HashMap<>();
@@ -39,11 +44,35 @@ public abstract class GdMapRequest <T extends GdMapResponse>extends HttpRequest 
      */
     public abstract String getRequestMethod();
 
+    /**
+     * 默认的返回的格式
+     * @return
+     */
+    public String defaultOutput(){
+        return "JSON";
+    }
+
+
+    public void setKey(String key){
+        this.key = key;
+        if (key != null) {
+            this.putParamMap("key", key);
+        }
+    }
+
+    public String getKey() {
+        return this.key;
+    }
+
     public Map<String, String> getParamMap() {
         return paramMap;
     }
 
-    public void putParamMap(String key,String value){
+    public void setParamMap(Map<String, String> paramMap) {
+        this.paramMap = paramMap;
+    }
+
+    public void putParamMap(String key, String value){
         this.paramMap.put(key,value);
     }
 
@@ -51,6 +80,12 @@ public abstract class GdMapRequest <T extends GdMapResponse>extends HttpRequest 
     public String getDefaultMethod(){
         return this.getMethod();
     }
+
+    public void setDefaultOutPut(){
+        this.putParamMap("output",this.defaultOutput());
+    }
+
+
 
 
 }

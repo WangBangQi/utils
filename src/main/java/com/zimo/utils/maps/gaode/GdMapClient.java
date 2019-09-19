@@ -39,8 +39,10 @@ public class GdMapClient {
         } else {
             request.setMethod(request.getDefaultMethod());
         }
+        request.setDefaultOutPut();
         //计算签名之后，签名错误也能够正常返回，所以先不使用
-//        request.setQueryMap(this.sign(request.getParamMap()));
+//        request.setParamMap(this.sign(request.getParamMap()));
+        request.setQueryMap(request.getParamMap());
         boolean retry = this.autoRetry;
         int retryNumber = this.maxRetryNumber;
         HttpResponse response = null;
@@ -93,7 +95,7 @@ public class GdMapClient {
         //将结果转换成对象
         try {
             String result = httpResponse.getStringResult();
-            System.out.println(result);
+//            System.out.println(result);
             return JSONObject.parseObject(result,t);
         }catch (Throwable throwable){
             throw new GdMapException("parseGdMapResponse Error",throwable);
