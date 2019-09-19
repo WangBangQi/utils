@@ -10,24 +10,17 @@ public final class Constant {
     /**
      * 高德地图的应用 KEY  ，WIYDD
      */
-    public static final String APP_KEY = "8afe37a02ace445f368bdbbf96943afc";
+    public static final String APP_KEY = "83a6044de76597107b70e97db7785aa0";
 
 
     /**
      * 高德编码
      */
-    public static final String CODE_URL = "https://restapi.amap.com/v3/geocode/geo";
+    public static final String GEO_URL = "https://restapi.amap.com/v3/geocode/geo";
 
     /**
      * 和逆编码
      */
     public static final String RE_GEO_URL = "https://restapi.amap.com/v3/geocode/regeo";
-
-
-
-
-
-    public static final String PARAM_KEY = "key";
-
 
 }

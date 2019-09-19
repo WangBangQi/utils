@@ -78,6 +78,8 @@ public class HttpRequest {
         return method;
     }
 
+
+
     public HttpRequest setMethod(String method) {
         this.method = method;
         return this;

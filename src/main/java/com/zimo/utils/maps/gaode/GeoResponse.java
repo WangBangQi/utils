@@ -4,23 +4,17 @@ import java.util.List;
 
 /**
  * @author zi.mo
- * @description
+ * @description 编码返回对象
  * @createTime 2019/9/18,2:24 PM
  */
-public class GeoResponse {
-    /**
-     * 返回值为 0 或 1，0 表示请求失败；1 表示请求成功。
-     */
-    private String status;
+public class GeoResponse extends GdMapResponse{
+
     /**
      *返回结果的个数。
 
      */
     private String count;
-    /**
-     * 当 status 为 0 时，info 会返回具体错误原因，否则返回“OK”。详情可以参阅info状态表
-     */
-    private String info;
+
     /**
      * 地理编码信息列表,结果对象列表
      */
@@ -173,28 +167,12 @@ public class GeoResponse {
         }
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getCount() {
         return count;
     }
 
     public void setCount(String count) {
         this.count = count;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
     }
 
     public List<GeoCode> getGecodes() {

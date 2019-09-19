@@ -1,7 +1,8 @@
 package com.zimo.utils.maps.gaode;
 
 
-import java.math.BigDecimal;
+import com.zimo.utils.maps.gaode.exceptions.GdMapException;
+
 
 /**
  * @author zi.mo
@@ -10,5 +11,5 @@ import java.math.BigDecimal;
  */
 public interface GDMapService {
 
-    ReGeoResponse getAcsResponse(ReGeoRequest reGeoRequest);
+    <T extends GdMapResponse> T gerGdMapResponse(GdMapRequest<T> request)throws GdMapException;
 }

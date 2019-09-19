@@ -4,43 +4,17 @@ import java.util.List;
 
 /**
  * @author zi.mo
- * @description
+ * @description 逆编码返回对象
  * @createTime 2019/9/18,2:33 PM
  */
 public class ReGeoResponse extends GdMapResponse{
 
-    /**
-     * 返回值为 0 或 1，0 表示请求失败；1 表示请求成功。
-     */
-    private String status;
-    /**
-     * 当 status 为 0 时，info 会返回具体错误原因，否则返回“OK”。详情可以参阅info状态表
-     */
-    private String info;
     /**
      * 地理编码信息列表,结果对象列表
      */
     private List<ReGeoCode> regeocodes;
 
     private ReGeoCode regeocode;
-
-
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
 
     public List<ReGeoCode> getRegeocodes() {
         return regeocodes;
@@ -111,6 +85,11 @@ public class ReGeoResponse extends GdMapResponse{
 
             private Building building;
 
+            /**
+             * 门牌信息对象
+             */
+            private StreetNumber streetNumber;
+
             public static class Neighborhood{
                 /**
                  * 社区名称
@@ -157,6 +136,62 @@ public class ReGeoResponse extends GdMapResponse{
                 public void setType(String type) {
                     this.type = type;
                 }
+            }
+
+            public static class StreetNumber{
+                private String street;
+                private String number;
+                private String location;
+                private String direction;
+                private String distance;
+
+                public String getStreet() {
+                    return street;
+                }
+
+                public void setStreet(String street) {
+                    this.street = street;
+                }
+
+                public String getNumber() {
+                    return number;
+                }
+
+                public void setNumber(String number) {
+                    this.number = number;
+                }
+
+                public String getLocation() {
+                    return location;
+                }
+
+                public void setLocation(String location) {
+                    this.location = location;
+                }
+
+                public String getDirection() {
+                    return direction;
+                }
+
+                public void setDirection(String direction) {
+                    this.direction = direction;
+                }
+
+                public String getDistance() {
+                    return distance;
+                }
+
+                public void setDistance(String distance) {
+                    this.distance = distance;
+                }
+            }
+
+            public StreetNumber getStreetNumber() {
+                return streetNumber;
+            }
+
+            public void setStreetNumber(StreetNumber streetNumber) {
+                this.streetNumber = streetNumber;
             }
 
             public String getProvince() {

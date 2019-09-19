@@ -12,16 +12,32 @@ import java.util.Map;
  */
 public abstract class GdMapRequest <T extends GdMapResponse>extends HttpRequest {
 
-    private String method = HttpRequest.METHOD_GET;
-
+    /**
+     * 请求参数
+     */
     private Map<String,String> paramMap = new HashMap<>();
 
     public GdMapRequest() {
         super();
-        this.setMethod(this.method);
     }
 
+    /**
+     * 对应的需要转换的 response 对象
+     * @return
+     */
     public abstract Class<T> getResponseClass();
+
+    /**
+     * 获取该请求的 API 接口
+     * @return
+     */
+    public abstract String getRequestUrl();
+
+    /**
+     * 该请求的请求方法
+     * @return
+     */
+    public abstract String getRequestMethod();
 
     public Map<String, String> getParamMap() {
         return paramMap;
@@ -30,4 +46,11 @@ public abstract class GdMapRequest <T extends GdMapResponse>extends HttpRequest 
     public void putParamMap(String key,String value){
         this.paramMap.put(key,value);
     }
+
+
+    public String getDefaultMethod(){
+        return this.getMethod();
+    }
+
+
 }

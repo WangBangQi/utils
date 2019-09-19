@@ -22,6 +22,16 @@ public class GdMapClient {
     }
 
     private HttpResponse doAction(GdMapRequest request){
+        if (null == request.getRequestUrl()){
+            throw new GdMapException("request url invalid ,you should set value ");
+        }
+        request.setUrl(request.getRequestUrl());
+        if (null != request.getRequestMethod()){
+            request.setMethod(request.getRequestMethod());
+        } else {
+            request.setMethod(request.getDefaultMethod());
+        }
+
         boolean retry = this.autoRetry;
         int retryNumber = this.maxRetryNumber;
         HttpResponse response = null;

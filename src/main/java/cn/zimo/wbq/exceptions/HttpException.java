@@ -18,4 +18,7 @@ public class HttpException extends ErrCodeException {
         super(code, message);
     }
 
+    public HttpException(String message, Throwable throwable) {
+        super(message, throwable);
+    }
 }

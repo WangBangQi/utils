@@ -182,7 +182,7 @@ public class HttpHandler {
             }
             return httpResponse;
         } catch (Exception e) {
-            throw new HttpException();
+            throw new HttpException("Http Error",e.getCause());
         }
     }
 }

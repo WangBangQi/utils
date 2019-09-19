@@ -1,15 +1,10 @@
 package com.zimo.utils.maps.gaode;
 
-import cn.zimo.wbq.http.HttpHandler;
 import cn.zimo.wbq.http.HttpRequest;
 
-import cn.zimo.wbq.http.HttpResponse;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author zi.mo
@@ -26,18 +21,10 @@ public class GDMapServiceImpl implements GDMapService {
         client = new GdMapClient();
     }
 
-
     @Override
-    public ReGeoResponse getAcsResponse(ReGeoRequest reGeoRequest) {
-
-        reGeoRequest.setUrl(Constant.RE_GEO_URL);
-        reGeoRequest.setMethod(HttpRequest.METHOD_GET);
-
-        reGeoRequest.setQueryMap(reGeoRequest.getParamMap());
-
-        return client.getGdMapResponse(reGeoRequest);
+    public <T extends GdMapResponse> T gerGdMapResponse(GdMapRequest<T> request) {
+        return client.getGdMapResponse(request);
     }
-
 
     public static void main (String args[]){
 
@@ -48,10 +35,14 @@ public class GDMapServiceImpl implements GDMapService {
         reGeoRequest.setLatLng("120.1068580000","30.3320730000");
         reGeoRequest.setRoadLevel(0);
 
-        ReGeoResponse reGeoResponse = gdMapService.getAcsResponse(reGeoRequest);
+        ReGeoResponse reGeoResponse = gdMapService.gerGdMapResponse(reGeoRequest);
 
 
-        System.out.println(JSONObject.toJSONString(reGeoResponse.getRegeocode()));
+        if (reGeoResponse.isSuccess()){
+            log.info("请求成功:{}",JSONObject.toJSONString(reGeoResponse.getRegeocode()));
+        } else {
+            log.info("请求失败:info={},infocode={}",reGeoResponse.getInfo(),reGeoResponse.getInfocode());
+        }
 
 
     }
