@@ -19,7 +19,7 @@ public class GeoResponse extends GdMapResponse{
      * 地理编码信息列表,结果对象列表
      */
 
-    private List<GeoCode> gecodes;
+    private List<GeoCode> geocodes;
 
     public static class GeoCode {
 
@@ -175,11 +175,11 @@ public class GeoResponse extends GdMapResponse{
         this.count = count;
     }
 
-    public List<GeoCode> getGecodes() {
-        return gecodes;
+    public List<GeoCode> getGeocodes() {
+        return geocodes;
     }
 
-    public void setGecodes(List<GeoCode> gecodes) {
-        this.gecodes = gecodes;
+    public void setGeocodes(List<GeoCode> geocodes) {
+        this.geocodes = geocodes;
     }
 }

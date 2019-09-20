@@ -1,5 +1,6 @@
 package com.zimo.utils.maps.gaode;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,28 @@ public class TestUtil {
         GDMapService gdMapService = new GDMapServiceImpl();
 
         TestUtil testUtil = new TestUtil();
-        testUtil.fixedPositionThroughIp(gdMapService);
+//        testUtil.fixedPositionThroughIp(gdMapService);
+//        testUtil.geoRequest(gdMapService);
+        testUtil.weatherRequest(gdMapService);
+    }
+
+
+    public void weatherRequest(GDMapService gdMapService){
+        WeatherInfoRequest request = new WeatherInfoRequest();
+        request.setCity("330100");
+        request.setExtensions(WeatherInfoRequest.Extension.ALL.getValue());
+        request.setKey(Constant.APP_KEY);
+        WeatherInfoResponse weatherInfoResponse = gdMapService.gerGdMapResponse(request);
+        System.out.println(JSONObject.toJSONString(weatherInfoResponse));
+    }
+
+
+    public void geoRequest(GDMapService gdMapService){
+        GeoRequest request = new GeoRequest();
+        request.setAddress("浙江省杭州市");
+        request.setKey(Constant.APP_KEY);
+        GeoResponse response =  gdMapService.gerGdMapResponse(request);
+        System.out.println(JSONObject.toJSONString(response));
     }
 
 
