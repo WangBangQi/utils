@@ -1,19 +1,24 @@
 server:
-  port: 8888
+  port: 8080
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/utils_db?useUnicode=true&useSSL=false&characterEncoding=UTF-8
-    username: utils_user
-    password: aa111111
-mybatis:
-  configuration:
-    auto-mapping-behavior: full
+    username: root
+    password: root
 
 #打印sql
 logging:
   level:
-   com.zimo.utils.mapper: debug
+   com.zimo.utils.mapper: info
+
+mybatis:
+  #配置mapper文件所在地，在 resources 目录下的mapper目录的*xml文件
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  #配置文件
+  config-location: classpath:mybatis/mybatis-config.xml
+  #对应实体类的路径
+  type-aliases-package: com.zimo.utils.model
 
 
 #spring:

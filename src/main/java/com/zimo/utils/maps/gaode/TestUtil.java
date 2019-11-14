@@ -21,7 +21,7 @@ public class TestUtil {
         TestUtil testUtil = new TestUtil();
 //        testUtil.fixedPositionThroughIp(gdMapService);
 //        testUtil.geoRequest(gdMapService);
-        testUtil.weatherRequest(gdMapService);
+        testUtil.geoRequest(gdMapService);
     }
 
 
@@ -37,7 +37,7 @@ public class TestUtil {
 
     public void geoRequest(GDMapService gdMapService){
         GeoRequest request = new GeoRequest();
-        request.setAddress("浙江省杭州市");
+        request.setAddress("浙江省杭州市拱墅区泰嘉园L座903");
         request.setKey(Constant.APP_KEY);
         GeoResponse response =  gdMapService.gerGdMapResponse(request);
         System.out.println(JSONObject.toJSONString(response));

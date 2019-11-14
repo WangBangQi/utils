@@ -68,4 +68,9 @@ public final class Code {
 
     //被禁用
     public static final int DISABLE = 10014;
+
+    /**
+     * 促销异常
+     */
+    public static final int PROMOTION_ERROR = 10015;
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zimo.utils.mapper.PromotionMapper" >
+
+
+    <insert id="insert" parameterType="com.zimo.utils.promotion.Promotion" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into promotions (id,name,description,position,type,config,began_at,ended_at)
+        values
+        (#{id},#{name},#{description},#{position},#{type},#{config},#{beganAt},#{endedAt});
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM promotions
+        WHERE id = #{id}
+    </delete>
+
+    <select id="findById" resultType="com.zimo.utils.promotion.Promotion">
+        SELECT id,name,description,position,type,config,began_at as beganAt ,ended_at as endedAt
+        FROM promotions
+        WHERE id = #{id}
+    </select>
+
+</mapper>

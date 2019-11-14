@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zimo.utils.mapper.UserAuthMapper" >
+
+    <sql id="Base_column_list>">
+        id,account,password,login_info
+    </sql>
+
+    <insert id="insert" parameterType="com.zimo.utils.model.UserAuth">
+        insert into user_auth (account, login_info, password)
+        values (#{account},#{loginInfo},#{password});
+    </insert>
+
+    <update id="update" parameterType="com.zimo.utils.model.UserAuth">
+        update user_auth
+        set account = #{account} ,
+        login_info = #{loginInfo} ,
+        password = #{password}
+        where id = #{id};
+    </update>
+
+</mapper>

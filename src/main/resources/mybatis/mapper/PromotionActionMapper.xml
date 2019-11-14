@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zimo.utils.mapper.PromotionActionMapper" >
+
+    <sql id="Base_column_list>">
+        id,account,password,login_info
+    </sql>
+
+    <insert id="insert" parameterType="com.zimo.utils.promotion.PromotionAction">
+       insert into promotion_actions (promotion_id,type, config, create_time)
+       values
+       (#{promotionId},#{type},#{config},#{createTime});
+    </insert>
+
+    <delete id="deleteByPromotionId">
+        DELETE FROM promotion_actions
+        WHERE promotion_id = #{promotionId}
+    </delete>
+
+    <select id="listByPromotionId" parameterType="java.lang.Long" resultType="com.zimo.utils.promotion.PromotionAction">
+        SELECT id,promotion_id AS promotionId ,type, config, create_time as createTime
+        FROM promotion_actions
+        WHERE promotion_id = #{promotionId}
+    </select>
+</mapper>
